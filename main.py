@@ -54,7 +54,7 @@ target_plaintext = strxor(target_ciphertext, key)
 print(f"Target plaintext decryption:\n{target_plaintext}")
 
 # from here on it was a trial-and-error guess. once the first few worlds became clear I figured it's from the bitcoin whitepaper
-target_key = "Bitcoin: A purely peer-to-peer version of electronic cash would allow online payments to be sent directly from one party to another without going through a financial institution"
+target_key = "Bitcoin: A purely peer-to-peer version of electronic cash would allow online payments to be sent directly from one party to another without going through a financial institution."
 hex_key = binascii.hexlify(target_key.encode()).decode()
 
 # below is the resulting test with the target_key (handwritten) above
@@ -69,3 +69,13 @@ hex_key = binascii.hexlify(target_key.encode()).decode()
 
 for s in ciphertexts:
     print(strxor(s, binascii.unhexlify(hex_key)))
+
+bonus_hex = "1f3cb1f3e01f3fd1f3ea1f3e61f3e01f3e71f3b31f3a91f3c81f3a91f3f91f3fc1f3fb1f3ec1f3e51f3f01f3a91f3f91f3ec1f3ec526e1b014a020411074c17111b1c071c4e4f0146430d0d08131d1d010707040017091648461e1d0618444f074c010e19594f0f1f1a07024e1d041719164e1c1652114f411645541b004e244f080213010c004c3b4c0911040e480e070b00310213101c4d0d4e00360b4f151a005253184913040e115454084f010f114554111d1a550f0d520401461f3e01f3e71f3e81f3e71f3ea1f3e01f3e81f3e51f3a91f3e01f3e71f3fa1f3fd1f3e01f3fd1f3fc1f3fd1f3e01f3e61f3e71f3a7"
+
+# since we know that key is NOT repeating, that means it's likely that some salt has been added to the hex key above. removing all the "1f3" from the hex shorterns it and can be deciphered to message below:
+# Congratulations on championing the first of many assignments here at the Polkadot Blockchain Academy! We are so glad to have you here!
+
+bonux_hex = bonus_hex.replace("1f3", "");
+
+print(strxor(bonus_hex, binascii.unhexlify(hex_key)))
+
