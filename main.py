@@ -75,7 +75,7 @@ bonus_hex = "1f3cb1f3e01f3fd1f3ea1f3e61f3e01f3e71f3b31f3a91f3c81f3a91f3f91f3fc1f
 # since we know that key is NOT repeating, that means it's likely that some salt has been added to the hex key above. removing all the "1f3" from the hex shorterns it and can be deciphered to message below:
 # Congratulations on championing the first of many assignments here at the Polkadot Blockchain Academy! We are so glad to have you here!
 
-bonux_hex = bonus_hex.replace("1f3", "");
-
-print(strxor(bonus_hex, binascii.unhexlify(hex_key)))
+bonus_hex_cleaned = bonus_hex.replace("1f3", "")
+final_msg = strxor(binascii.unhexlify(bonus_hex_cleaned), binascii.unhexlify(hex_key))
+print(final_msg)
 
